@@ -154,7 +154,7 @@ function App() {
 
   const Board = props => {
     return (
-      <div className='h-auto w-100 overflow-hidden mb-0 pb-5' style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', flex: 8, paddingLeft: '8rem', paddingRight: '8rem'}}>
+      <div className='h-auto w-100 overflow-scroll mb-0 pb-5' style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', flex: 8, paddingLeft: '8rem', paddingRight: '8rem'}}>
             <Container fluid style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', padding: '1rem', borderRadius: '2rem'}}>
               <Row>
               {board.stacks.map(stack => (
