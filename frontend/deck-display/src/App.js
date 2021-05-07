@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Markdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import { ChatLeftFill, ClockFill, FileCode, Github, PeopleFill, PersonFill, TagsFill } from 'react-bootstrap-icons';
 import Moment from 'moment';
 import './App.css';
@@ -73,7 +74,7 @@ function App() {
     if (props.description !== "") {
       return (
         <ListGroup.Item>
-          <Markdown>{props.description}</Markdown>
+          <Markdown remarkPlugins={[gfm]}>{props.description}</Markdown>
         </ListGroup.Item>
       )
     } else {
@@ -130,8 +131,8 @@ function App() {
 
   const Deckstack = props => {
     return (
-      <Col>      
-        <ListGroup className='h-75 overflow-hidden' style={{flex: 1, borderRadius: '1rem'}} key={props.key}>
+      <Col className='h-100 py-2'>      
+        <ListGroup className='h-100 overflow-hidden' style={{flex: 1, borderRadius: '1rem'}} key={props.key}>
           <ListGroup.Item active>
           <h3>{props.title}</h3>
           </ListGroup.Item>
@@ -154,15 +155,15 @@ function App() {
 
   const Board = props => {
     return (
-      <div className='h-auto w-100 overflow-scroll mb-0 pb-5' style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', flex: 8, paddingLeft: '8rem', paddingRight: '8rem'}}>
-            <Container fluid style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', padding: '1rem', borderRadius: '2rem'}}>
-              <Row>
+      // <div className='h-auto w-100 border overflow-auto d-flex flex-row justify-content-center' style={{flex: 8}}>
+            <Container className='h-75 w-100 overflow-auto d-flex flex-row justify-content-center' fluid style={{borderRadius: '2rem', flex: 8}}>
+              <Row className>
               {board.stacks.map(stack => (
                   <Deckstack title={stack.title} cards={stack.cards} key={stack.id} />
                 ))}
               </Row>
             </Container>
-      </div>
+      // </div>
     )
   }
 
@@ -199,7 +200,7 @@ function App() {
 
   return (
     <>
-      <div className='vh-100 vw-100 overflow-hidden d-flex flex-column'>
+      <div className='vh-100 vw-100 overflow-hidden d-flex flex-column bg-light'>
         <TopContainer/>
         {board !== "" ? (
           <Board/>
