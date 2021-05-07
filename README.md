@@ -2,7 +2,13 @@
 
 This app aims to provide a **temporary** solution for this issue: [Public board sharing](https://github.com/nextcloud/deck/issues/14) in the Nextcloud Deck application.
 
-Build the image with: ```docker build -t deck-display:latest .````
+## How does it work?
+
+You need to create an extra nextcloud user, with whom you share the boards you want to show on the page. The app uses the Deck Api to get all Boards shared with that user and displays them.
+
+## Deployment
+
+Build the image with: ```docker build -t deck-display:latest .```
 
 **Necessary** environment variables:
 
