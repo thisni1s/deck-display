@@ -131,7 +131,7 @@ function App() {
 
   const Deckstack = props => {
     return (
-      <Col className='h-100 pb-2 mx-2' style={{width: '20rem'}}>      
+      <Col className='h-100 py-2 mx-2' style={{width: '20rem'}}>      
         <ListGroup className='h-100 overflow-hidden' style={{flex: 1, borderRadius: '1rem'}} key={props.key}>
           <ListGroup.Item active>
           <h3>{props.title}</h3>
