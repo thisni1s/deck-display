@@ -60,7 +60,7 @@ function App() {
 
   const Deckcard = props => {
     return (
-    <Card style={{ width: '18rem', flex: 1, marginBottom: '10px'}} key={props.key}>
+    <Card className='w-100 my-2' key={props.key}>
       <Card.Header>{props.title}</Card.Header>
       <ListGroup variant="flush">
         <Meta labels={props.labels} usernames={props.usernames} duedate={props.duedate}/>
@@ -131,7 +131,7 @@ function App() {
 
   const Deckstack = props => {
     return (
-      <Col className='h-100 py-2'>      
+      <Col className='h-100 pb-2 mx-2' style={{width: '20rem'}}>      
         <ListGroup className='h-100 overflow-hidden' style={{flex: 1, borderRadius: '1rem'}} key={props.key}>
           <ListGroup.Item active>
           <h3>{props.title}</h3>
@@ -155,23 +155,21 @@ function App() {
 
   const Board = props => {
     return (
-      // <div className='h-auto w-100 border overflow-auto d-flex flex-row justify-content-center' style={{flex: 8}}>
-            <Container className='h-75 w-100 overflow-auto d-flex flex-row justify-content-center' fluid style={{borderRadius: '2rem', flex: 8}}>
-              <Row className>
-              {board.stacks.map(stack => (
-                  <Deckstack title={stack.title} cards={stack.cards} key={stack.id} />
-                ))}
-              </Row>
-            </Container>
-      // </div>
+      <Container className='h-75 w-100 overflow-auto d-flex flex-row justify-content-center' fluid style={{borderRadius: '2rem', flex: 8}}>
+        <Row className>
+        {board.stacks.map(stack => (
+            <Deckstack title={stack.title} cards={stack.cards} key={stack.id} />
+          ))}
+        </Row>
+      </Container>
     )
   }
 
   const TopContainer = props => {
     return (
-      <Container className='h-auto overflow-auto mt-3 d-flex flex-column p-2 justify-content-space-between'>
-        <Container className='overflow-auto d-flex'>
-          <Container className='d-flex flex-column'>
+      <Container className='h-automt-3 d-flex flex-wrap flex-column p-2 justify-content-space-between'>
+        <Container className='d-flex flex-wrap'>
+          <Container className='w-50 d-flex flex-column'>
             <h3 className='display-3'>Deck Display</h3>
             <hr className='mt-0 mb-1'/>
             <span>
@@ -179,10 +177,9 @@ function App() {
                 <Github style={{marginRight: '0.25rem'}}/>
                 <a href='https://github.com/thisni1s/deck-display' rel='nofollow'>Source</a>
               </span>
-            </span>
-            
+            </span>        
           </Container>
-          <Container style={{borderRadius: '1rem'}} className='overflow-auto bg-primary text-white border d-flex align-self-center justify-content-center'>
+          <Container style={{borderRadius: '1rem'}} className='w-50 bg-primary text-white border d-flex align-self-center justify-content-center'>
             {<h4 className='display-4'> {board.title ?? <Spinner animation="border"/>}</h4>}
           </Container>        
         </Container>
