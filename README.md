@@ -8,12 +8,28 @@ You need to create an extra nextcloud user, with whom you share the boards you w
 
 ## Deployment
 
-Build the image with: ```docker build -t deck-display:latest .```
+Build the Docker image with: ```docker build -t deck-display:latest .```
+
+Example for a docker-compose file:
+```
+version: "3.7"
+services:
+  deck-display:
+    image: deck-display:latest
+    ports:
+      - "127.0.0.1:5000:5000"
+    environment:
+      USERNAME: deck-user
+      PASSWORD: yourverysecurepassword
+      BASEURL: https://nextcloud.example.tld  
+    restart: unless-stopped
+
+```
 
 **Necessary** environment variables:
 
-- USERNAME <- the nextcloud username, please create an extra user for this
-- PASSWORD <- the password for the nextcloud user.
-- BASEURL <- the url of your nextcloud instance
+- USERNAME <- The nextcloud username, please create an extra user for this.
+- PASSWORD <- The password for the nextcloud user.
+- BASEURL <- the url of your nextcloud instance without a '/' ath the end!
 
-**Note:** I had no idea what i was doing, please implement the original nextcloud issue :)
+**Note:** I had no idea what i was doing, please implement the original nextcloud issue. :)
