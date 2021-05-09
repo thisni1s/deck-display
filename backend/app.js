@@ -9,11 +9,13 @@ let username = process.env.USERNAME
 let password = process.env.PASSWORD
 let basic = 'Basic '+ base64.encode(username + ':' + password)
 let baseurl = process.env.BASEURL
+let counter = 0;
 
 app.use(express.static('./static')); //serves the index.html
 
 app.get('/boards', async function(req, res) {
-    
+    ++counter;
+    console.log('counter: ', counter);
     let data = "";
     var config = {
       method: 'get',
